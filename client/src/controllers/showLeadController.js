@@ -1,3 +1,6 @@
-angular.module('obviapp').controller('leadController', function(){
-	this.leads = ["Lead bit 1", "Second lead bit", "Third lead bit"];
+angular.module('obviapp').controller('leadController', function($http){
+	$http.get('/leads')
+	.then((response) => {
+		this.leads = response.data;
+	});
 });

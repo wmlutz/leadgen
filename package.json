@@ -15,7 +15,8 @@
     "angularjs": "0.0.1",
     "body-parser": "^1.14.2",
     "express": "^4.14.0",
-    "mongodb": "^2.1.4"
+    "jshint": "^2.9.4",
+    "mongodb": "^2.2.16"
   },
   "devDependencies": {
     "babel-core": "^6.2.1",
