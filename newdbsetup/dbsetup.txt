@@ -1,7 +1,6 @@
 use leadgen-dev-001
 
-db.users.insert(
-  {
+db.users.insert({
     "_id" : "captainamerica@gmail.com",
     "fname" : "Steve",
     "lname" : "Rogers",
@@ -15,7 +14,7 @@ db.campaigns.insert(
   {
     "_id" : "Avengers Recruiting",
     "date_created" : new Date("<2016-07-04>"),
-    "user_id_email" : "captainamerica@gmail.com",
+    "user_id" : "captainamerica@gmail.com",
     "cost_per_call" : 1.5,
     "total_calls": 3,
     "total_cost": 4.5,
@@ -44,12 +43,12 @@ db.leads.insert(
 
 db.interactions.insert(
   {
-    "Title" : "Recruitment Script",
-    "Campaign_id" : "Avengers Recruiting",
-    "script" : {
+    "title" : "Recruitment Script",
+    "campaign_id" : "Avengers Recruiting",
+    "script" : [{
                   "sequence" : 0,
                   "title" : "Opening greeting",
-                  "category" : "User mono-log",
+                  "category" : "User monolog",
                   "content" : "Hello *lead.fname*, this is *user.fname* from the Avengers, do you have time to talk today?"
                },{
                   "sequence" : 1,
@@ -59,8 +58,8 @@ db.interactions.insert(
                },{
                   "sequence" : 2,
                   "title" : "Value Prop",
-                  "category" : "User mono-log",
+                  "category" : "User monolog",
                   "content" : "Well, I'd like to tell you a little bit about our citizen Avengers initiative. Would you like to join?"
-               }
+               }]
   }
 )
