@@ -1,0 +1,66 @@
+use leadgen-dev-001
+
+db.users.insert(
+  {
+    "_id" : "captainamerica@gmail.com",
+    "fname" : "Steve",
+    "lname" : "Rogers",
+    "phone" : "610-555-1776",
+    "password" : "password01!",
+    "company_name" : "The Avengers"
+  }
+)
+
+db.campaigns.insert(
+  {
+    "_id" : "Avengers Recruiting",
+    "date_created" : new Date("<2016-07-04>"),
+    "user_id_email" : "captainamerica@gmail.com",
+    "cost_per_call" : 1.5,
+    "total_calls": 3,
+    "total_cost": 4.5,
+    "completion_date": new Date("<2016-07-05>")
+  }
+)
+
+db.leads.insert(
+  [{
+    "fname" : "Bruce",
+    "lname" : "Wayne",
+    "phone" : "000-555-1111",
+    "campaign_id" : "Avengers Recruiting"
+  },{
+    "fname" : "Clark",
+    "lname" : "Kent",
+    "phone" : "999-555-9999",
+    "campaign_id" : "Avengers Recruiting"
+  },{
+    "fname" : "Diana",
+    "lname" : "Prince",
+    "phone" : "333-555-3333",
+    "campaign_id" : "Avengers Recruiting"
+  }]
+)
+
+db.interactions.insert(
+  {
+    "Title" : "Recruitment Script",
+    "Campaign_id" : "Avengers Recruiting",
+    "script" : {
+                  "sequence" : 0,
+                  "title" : "Opening greeting",
+                  "category" : "User mono-log",
+                  "content" : "Hello *lead.fname*, this is *user.fname* from the Avengers, do you have time to talk today?"
+               },{
+                  "sequence" : 1,
+                  "title" : "Let the customer respond",
+                  "category" : "Customer response",
+                  "content" : "Either they have time or they dont. Continue to the next section. Listen intently."
+               },{
+                  "sequence" : 2,
+                  "title" : "Value Prop",
+                  "category" : "User mono-log",
+                  "content" : "Well, I'd like to tell you a little bit about our citizen Avengers initiative. Would you like to join?"
+               }
+  }
+)
