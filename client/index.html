@@ -9,6 +9,8 @@
     <div>
       <h1>Obvi</h1>
 
+      <nav-bar></nav-bar>
+
 	  <ul ng-controller="leadController as leadCtrl">
 		<li ng-repeat="lead in leadCtrl.leads">{{lead}}</li>
 	  </ul>
@@ -22,11 +24,14 @@
 	<script type="text/javascript" src="src/vendor/angular-resource.min.js"></script>
 
 	<!-- App -->
-	<script type="text/javascript" src="src/app.js"></script>
+	<script type="text/javascript" src="/src/app.js"></script>
+  <script type="text/javascript" src="src/routes.js"></script>
 
 	<!-- Services -->
 	<!-- Directives -->
-	<!-- Controllers -->
+  <script type="text/javascript" src="src/directives/navBar.js"></script>
+
+  <!-- Controllers -->
 	<script type="text/javascript" src="src/controllers/showLeadController.js"></script>
 
 	<!-- Services -->
