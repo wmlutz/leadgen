@@ -6,7 +6,7 @@ let app = express();
 let mongoUtil = require('./mongoUtil.js');
 mongoUtil.connect();
 
-app.use( express.static(__dirname +"/../client"));
+app.use(express.static(__dirname +"/../client"));
 
 app.get("/leads", function(resquest, response){
   let leads = mongoUtil.leads();
