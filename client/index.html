@@ -7,13 +7,13 @@
 <body>
   <div>
     <div>
-      <h1>Obvi</h1>
-
+    
       <ob-nav-bar></ob-nav-bar>
 
-	  <ul ng-controller="leadController as leadCtrl">
-		<li ng-repeat="lead in leadCtrl.leads">{{lead}}</li>
-	  </ul>
+      <h1>Obvi</h1>
+      <ul ng-controller="leadController as leadCtrl">
+        <li ng-repeat="lead in leadCtrl.leads">{{lead}}</li>
+      </ul>
     </div>
     <div ng-view class="container-fluid"></div>
   </body>
