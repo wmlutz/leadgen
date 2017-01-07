@@ -1,15 +1,15 @@
 <nav class="navbar navbar-default">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <div class="navbar-brand">
-        <a href="/#/">Yapr</a>
-      </div>
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <div class="navbar-brand">
+                <a href="/#/">Yapr</a>
+            </div>
+        </div>
+        <ul class="nav navbar-nav">
+            <li ng-class="{'active' : isPage('login')}"><a href="#/login">Login</a></li>
+            <li ng-class="{'active' : isPage('leads')}"><a href="#/leads">Leads</a></li>
+            <li ng-class="{'active' : isPage('interaction')}"><a href="#/interaction">Interaction</a></li>
+            <li ng-class="{'active' : isPage('review')}"><a href="#/review">Review</a></li>
+        </ul>
     </div>
-    <ul class="nav navbar-nav">
-      <li ng-class="{'active' : isPage('login')}"><a href="#/login">Login</a></li>
-      <li ng-class="{'active' : isPage('leads')}"><a href="#/leads">Leads</a></li>
-      <li ng-class="{'active' : isPage('interaction')}"><a href="#/interaction">Interaction</a></li>
-      <li ng-class="{'active' : isPage('review')}"><a href="#/review">Review</a></li>
-    </ul>
-  </div>
 </nav>

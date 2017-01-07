@@ -1,39 +1,41 @@
 <!DOCTYPE html>
 <html lang="en" ng-app="obviapp">
+
 <head>
-  <meta charset="UTF-8">
-  <title>Obvi</title>
+    <meta charset="UTF-8">
+    <title>Obvi</title>
 </head>
+
 <body>
-  <div>
     <div>
-    
-      <ob-nav-bar></ob-nav-bar>
+        <div>
 
-      <h1>Obvi</h1>
-      <ul ng-controller="leadController as leadCtrl">
-        <li ng-repeat="lead in leadCtrl.leads">{{lead}}</li>
-      </ul>
-    </div>
-    <div ng-view class="container-fluid"></div>
-  </body>
+            <ob-nav-bar></ob-nav-bar>
 
-  	<!-- vendor -->
-	<script type="text/javascript" src="src/vendor/jquery-3.1.1.min.js"></script>
-	<script type="text/javascript" src="src/vendor/angular.js"></script>
-	<script type="text/javascript" src="src/vendor/angular-route.min.js"></script>
-	<script type="text/javascript" src="src/vendor/angular-resource.min.js"></script>
+            <h1>Obvi</h1>
+            <ul ng-controller="leadController as leadCtrl">
+                <li ng-repeat="lead in leadCtrl.leads">{{lead}}</li>
+            </ul>
+        </div>
+        <div ng-view class="container-fluid"></div>
+</body>
 
-	<!-- App -->
-	<script type="text/javascript" src="src/app.js"></script>
-  <script type="text/javascript" src="src/routes.js"></script>
+<!-- vendor -->
+<script type="text/javascript" src="src/vendor/jquery-3.1.1.min.js"></script>
+<script type="text/javascript" src="src/vendor/angular.js"></script>
+<script type="text/javascript" src="src/vendor/angular-route.min.js"></script>
+<script type="text/javascript" src="src/vendor/angular-resource.min.js"></script>
 
-	<!-- Directives -->
-  <script type="text/javascript" src="src/directives/navBar.js"></script>
+<!-- App -->
+<script type="text/javascript" src="src/app.js"></script>
+<script type="text/javascript" src="src/routes.js"></script>
 
-  <!-- Controllers -->
-	<script type="text/javascript" src="src/controllers/showLeadController.js"></script>
+<!-- Directives -->
+<script type="text/javascript" src="src/directives/navBar.js"></script>
 
-	<!-- Services -->
+<!-- Controllers -->
+<script type="text/javascript" src="src/controllers/showLeadController.js"></script>
+
+<!-- Services -->
 
 </html>
