@@ -15,6 +15,7 @@
 		<li ng-repeat="lead in leadCtrl.leads">{{lead}}</li>
 	  </ul>
     </div>
+    <div ng-view class="container-fluid"></div>
   </body>
 
   	<!-- vendor -->
@@ -24,10 +25,9 @@
 	<script type="text/javascript" src="src/vendor/angular-resource.min.js"></script>
 
 	<!-- App -->
-	<script type="text/javascript" src="/src/app.js"></script>
+	<script type="text/javascript" src="src/app.js"></script>
   <script type="text/javascript" src="src/routes.js"></script>
 
-	<!-- Services -->
 	<!-- Directives -->
   <script type="text/javascript" src="src/directives/navBar.js"></script>
 
