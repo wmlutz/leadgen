@@ -1,7 +1,7 @@
 angular.module('obviapp').config(function($routeProvider){
   $routeProvider
   // .when('/', {
-  //   redirectTo: '/login'
+  // 	redirectTo: '/login'
   // })
   .when('/login', {
     templateUrl: '/src/templates/login/index.html',

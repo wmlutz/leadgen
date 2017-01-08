@@ -5,4 +5,4 @@ angular.module('obviapp', ['ngRoute', 'ngResource'])
                 enabled: true,
                 requireBase: false
             });
-    }]);;
+    }]);

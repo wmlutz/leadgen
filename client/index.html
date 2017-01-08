@@ -2,22 +2,27 @@
 <html lang="en" ng-app="obviapp">
 
 <head>
-    <meta charset="UTF-8">
-    <title>Obvi</title>
+  <meta charset="UTF-8">
+  <title>Obvi</title>
+
+  <!-- style sheets -->
+  <link rel="stylesheet" href="src/styles/bootstrap.css"></link>
+  <link rel="stylesheet" href="src/styles/bootstrap-theme.css"></link>
+
 </head>
 
 <body>
+  <div>
     <div>
-        <div>
 
-            <ob-nav-bar></ob-nav-bar>
+      <ob-nav-bar></ob-nav-bar>
 
-            <h1>Obvi</h1>
-            <!-- <ul ng-controller="leadController as leadCtrl">
+      <h1>Yapr</h1>
+      <!-- <ul ng-controller="leadController as leadCtrl">
                 <li ng-repeat="lead in leadCtrl.leads">{{lead}}</li>
             </ul> -->
-        </div>
-        <div ng-view class="container-fluid"></div>
+    </div>
+    <div ng-view class="container-fluid"></div>
 </body>
 
 <!-- vendor -->
