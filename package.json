@@ -4,8 +4,7 @@
   "description": "MEAN stack",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "watch": "gulp watch --gulpfile client/gulpfile.babel.js"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Will Lutz",
   "license": "ISC",
@@ -13,7 +12,7 @@
     "angular": "^1.6.1",
     "angular-ui-router": "^0.2.18",
     "angularjs": "0.0.1",
-    "body-parser": "^1.14.2",
+    "body-parser": "^1.15.2",
     "express": "^4.14.0",
     "jshint": "^2.9.4",
     "mongodb": "^2.2.16"
