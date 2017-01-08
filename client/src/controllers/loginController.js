@@ -1,3 +1,5 @@
-angular.module('obviapp').controller('LoginController', function(){
-  
+angular.module('obviapp').controller('loginController', function() {
+	this.saveUser = function(user) {
+    console.log("User: ", user);
+	};
 });
