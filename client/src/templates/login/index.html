@@ -1,1 +1,27 @@
 <h1>Login Page</h1>
+
+<form class= "form" ng-submit="LoginController.saveUser(user)">
+  <div class="form-field">
+    <label class="form-label" for="fname">First Name</label>
+    <input class="form-input" id=fname required ng-model="user.fname"/>
+  </div>
+
+  <div class="form-field">
+    <label class="form-label" for="lname">Last Name</label>
+    <input class="form-input" id=lname required ng-model="user.lname"/>
+  </div>
+
+  <div class="form-field">
+    <label class="form-label" for="phone">Phone Number</label>
+    <input class="form-input" id=phone required ng-model="user.phone"/>
+  </div>
+
+  <div class="form-field">
+    <label class="form-label" for="company_name">Company</label>
+    <input class="form-input" id=company_name required ng-model="user.company_name"/>
+  </div>
+
+  <input class="btn" type="submit" value="submit" />
+</form>
+
+{{ user }}

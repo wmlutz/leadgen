@@ -5,7 +5,7 @@ angular.module('obviapp').config(function($routeProvider){
   // })
   .when('/login', {
     templateUrl: '/src/templates/login/index.html',
-    // controller: 'LoginController'
+    controller: 'LoginController'
   })
   .when('/leads', {
     templateUrl: '/src/templates/leads/index.html',

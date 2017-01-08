@@ -13,6 +13,9 @@ app.get("/leads", function(resquest, response){
   let leads = mongoUtil.leads();
   leads.find({}).toArray(function (err, docs) {
     // console.log(JSON.stringify(docs));
+    if(err) {
+      response.sendStatus(400);
+    }
     let firstNames = docs.map((lead) => lead.fname);
     response.json(firstNames);
   });
@@ -22,6 +25,9 @@ app.get("/campaigns", function(resquest, response){
   let campaigns = mongoUtil.campaigns();
   campaigns.find({}).toArray(function (err, docs) {
     // console.log(JSON.stringify(docs));
+    if(err) {
+      response.sendStatus(400);
+    }
     let campID = docs.map((campaign) => campaign._id);
     response.json(campID);
   });
