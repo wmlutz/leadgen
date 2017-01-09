@@ -9,4 +9,10 @@ angular.module('obviapp').controller('showLeadController', function($http){
 	.then((response) => {
 		this.campaigns = response.data;
 	});
+})
+.controller('getUsersController', function($http){
+	$http.get('/users')
+	.then((response) => {
+		this.users = response.data;
+	});
 });

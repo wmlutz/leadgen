@@ -36,12 +36,34 @@ app.get("/campaigns", function(resquest, response) {
 	});
 });
 
-app.post("/login", jsonParser, function(request, response) {
-  let newUser = request.body.user;
+app.get("/users", function(resquest, response) {
+	let users = mongoUtil.users();
+	users.find({}).toArray(function(err, docs) {
+		// console.log(JSON.stringify(docs));
+		if (err) {
+			response.sendStatus(400);
+		}
+		let userID = docs.map((user) => user._id);
+		response.json(userID);
+	});
+});
 
-  console.log("User info: ", newUser);
+app.post("/users", jsonParser, function(request, response) {
+	let newUser = request.body.user || {};
+	let users = mongoUtil.users();
 
-  response.sendStatus(201);
+	consoel.log("server app: ", newUser);
+	// error check that user has all fields
+	// if (!newUser._id || !newUser.fname ....)
+	// {response.sendstatus(400)}
+
+	users.insertOne(newUser, (err, res) => {
+		if (err) {
+			response.sendStatus(400);
+		}
+		response.sendStatus(201);
+	});
+
 });
 
 app.listen(8181, function() {

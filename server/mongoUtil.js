@@ -19,6 +19,9 @@ module.exports = {
     return _db.collection('leads');
   },
   campaigns(){
-    return _db.collection('campaigns')
+    return _db.collection('campaigns');
+  },
+  users(){
+    return _db.collection('users');
   }
 }
