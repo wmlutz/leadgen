@@ -6,7 +6,7 @@ let _db;
 
 module.exports = {
   connect() {
-    client.connect('mongodb://localhost:27017/leadgen-dev-001', function (err, db){
+    client.connect('mongodb://127.0.0.1:27017/leadgen-dev-001', function (err, db){
       if(err) {
         console.log("Error connecting to Mongo - check mongod connection");
         process.exit(1);

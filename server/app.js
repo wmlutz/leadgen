@@ -3,13 +3,13 @@
 let express = require('express');
 let app = express();
 
-let mongoUtil = require('./mongoUtil.js');
+let mongoUtil = require('./mongoUtil');
 mongoUtil.connect();
 
 app.use(express.static(__dirname + "/../client"));
 
-let bodyParser = require('body-parser');
-let jsonParser = bodyParser.json;
+let bodyParser = require("body-parser");
+let jsonParser = bodyParser.json();
 
 // NEED TO HANDLE ERRORS BETTER
 app.get("/leads", function(resquest, response) {
@@ -48,11 +48,11 @@ app.get("/users", function(resquest, response) {
 	});
 });
 
-app.post("/users", jsonParser, function(request, response) {
-	let newUser = request.body.user || {};
+app.post("/users", jsonParser, (request, response) => {
+	let newUser = request.body || {};
 	let users = mongoUtil.users();
 
-	consoel.log("server app: ", newUser);
+	//console.log("server app: ", newUser);
 	// error check that user has all fields
 	// if (!newUser._id || !newUser.fname ....)
 	// {response.sendstatus(400)}
