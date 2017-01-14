@@ -9,9 +9,55 @@
 <div class="row">
 
   <!-- Main control section -->
-  <div class="col-xs-12 col-md-8">
+  <div class="col-xs-12 col-md-8" ng-controller="leadUploadController as uploadCtrl">
     <h2>Form upload section</h2>
+    <form>
+      <div class="form-group">
+        <label for="file">Upload your CSV</label>
+        <input type="file" id="leadInputFile">
+        <p class="help-block">Please use a CSV file for your leads</p>
+      </div>
+
+      <div class="checkbox">
+        <label>
+            <input type="checkbox"> My data has headers
+          </label>
+      </div>
+    </form>
+    <!-- Form logic doesn't go anywhere, doesn't send data ANYWHERE yet. -->
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Header C1</th>
+          <th>Header C2</th>
+          <th>Header C3</th>
+          <th>Header C4</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>R2C1</td>
+          <td>R2C2</td>
+          <td>R2C3</td>
+          <td>R2C4</td>
+        </tr>
+        <tr>
+          <td>R3C1</td>
+          <td>R3C2</td>
+          <td>R3C3</td>
+          <td>R3C4</td>
+        </tr>
+        <tr>
+          <td>R4C1</td>
+          <td>R4C2</td>
+          <td>R4C3</td>
+          <td>R4C4</td>
+        </tr>
+      </tbody>
+    </table>
+
   </div>
+
   <!-- Reciept preview section -->
   <div class="col-xs-12 col-md-4">
     <ob-receipt-preview></ob-receipt-preview>
