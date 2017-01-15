@@ -24,6 +24,18 @@ app.get("/leads", function(resquest, response) {
 	});
 });
 
+app.post("/leads", (request, response) => {
+	let newLeadList = request.body || {};
+	let leads = mongoUtil.leads();
+
+	if (newLeadList) {
+			console.log("Made it to server side", newLeadList);
+			response.sendStatus(400);
+		}
+		console.log("Didn't make it to server side.")
+		response.sendStatus(201);
+});
+
 app.get("/campaigns", function(resquest, response) {
 	let campaigns = mongoUtil.campaigns();
 	campaigns.find({}).toArray(function(err, docs) {
@@ -63,7 +75,6 @@ app.post("/users", jsonParser, (request, response) => {
 		}
 		response.sendStatus(201);
 	});
-
 });
 
 app.listen(8181, function() {

@@ -1,1 +1,1 @@
-angular.module('obviapp', ['ngRoute', 'ngResource']);
+angular.module('obviapp', ['ngRoute', 'ngResource', 'ngFileUpload']);
