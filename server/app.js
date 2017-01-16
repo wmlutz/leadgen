@@ -31,31 +31,22 @@ app.get("/leads", function(resquest, response) {
 
 // server takes leads file and manages it
 app.post("/leads", upload.single('files'), function(req, res) {
-	console.log('got request from angular');
+	console.log('Starting Server post module');
 	var tmp_path = req.file.path;
-	console.log('this is the temp file path', tmp_path);
 	var target_path = 'uploads/' + req.file.originalname;
-	console.log('this is the target path', target_path);
+	console.log('this is the path and tmp path', target_path, tmp_path);
 
 	var src = fs.createReadStream(tmp_path);
 	var dest = fs.createWriteStream(target_path);
 	src.pipe(dest);
 	src.on('end', function() {
-		res.render('complete');
+		// res.render('complete');
+		res.sendStatus(201);
 	});
 	src.on('error', function(err) {
-		res.render('error');
-	});
-
-	// console.log(req.body); // form fields
-	// console.log(req.files); // form files
-	if (req) {
-		console.log("Made it to server side");
+		// res.render('error');
 		res.sendStatus(400);
-	} else {
-		console.log("Didn't make it to server side.");
-		res.sendStatus(201);
-	}
+	});
 });
 
 app.get("/campaigns", function(resquest, response) {
