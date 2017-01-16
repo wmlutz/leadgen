@@ -2,6 +2,8 @@
 
 let express = require('express');
 let app = express();
+let multiparty = require('connect-multiparty');
+let multipartyMiddleware = multiparty();
 
 let mongoUtil = require('./mongoUtil');
 mongoUtil.connect();
@@ -24,16 +26,25 @@ app.get("/leads", function(resquest, response) {
 	});
 });
 
-app.post("/leads", (request, response) => {
-	let newLeadList = request.body || {};
-	let leads = mongoUtil.leads();
+// server takes leads file and manages it
+app.post("/leads", multipartyMiddleware, (req, res) => {
+	let filegp = req.files;
+	let file = req.files.file;
+	console.log("this is the filegp:", filegp);
+	// console.log("this is the req.files:", req.files);
+	console.log("this is the file:", file);
+	// console.log(file.name);
+	// console.log(file.type);
 
-	if (newLeadList) {
-			console.log("Made it to server side", newLeadList);
-			response.sendStatus(400);
-		}
+	// let leads = mongoUtil.leads();
+
+	if (file) {
+		console.log("Made it to server side", file);
+		res.sendStatus(400);
+	} else {
 		console.log("Didn't make it to server side.")
-		response.sendStatus(201);
+		res.sendStatus(201);
+	}
 });
 
 app.get("/campaigns", function(resquest, response) {

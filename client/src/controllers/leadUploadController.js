@@ -1,12 +1,19 @@
 angular.module('obviapp').controller('leadUploadController', ['$scope', 'Upload', '$timeout', function($scope, Upload, $timeout) {
 	$scope.uploadCsv = function(file) {
 		console.log("Making call to file.upload" + file);
-		file.upload = Upload.upload({
-			url: '/upload', // Point to CSV
-			data: {file: file},
+		$scope.upload = Upload.upload({
+			url: '/leads', // Point to CSV
+			headers: {
+				'Accept': "application/json",
+				'Content-Type': undefined
+			},
+			data: {
+				'name': 'test',
+				'files': file
+			}
 		});
 
-		file.upload.then(function(response) {
+		$scope.upload.then(function(response) {
 			$timeout(function() {
 				file.result = response.data;
 			});
