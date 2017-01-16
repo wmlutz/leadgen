@@ -8,7 +8,6 @@ angular.module('obviapp').controller('leadUploadController', ['$scope', 'Upload'
 				'Content-Type': undefined
 			},
 			data: {
-				'name': 'test',
 				'files': file
 			}
 		});

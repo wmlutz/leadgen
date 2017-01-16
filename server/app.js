@@ -2,10 +2,13 @@
 
 let express = require('express');
 let app = express();
-let multiparty = require('connect-multiparty');
-let multipartyMiddleware = multiparty();
-
 let mongoUtil = require('./mongoUtil');
+let multer = require('multer');
+let upload = multer({
+	dest: './uploads/'
+});
+let fs = require('fs');
+
 mongoUtil.connect();
 
 app.use(express.static(__dirname + "/../client"));
@@ -27,22 +30,30 @@ app.get("/leads", function(resquest, response) {
 });
 
 // server takes leads file and manages it
-app.post("/leads", multipartyMiddleware, (req, res) => {
-	let filegp = req.files;
-	let file = req.files.file;
-	console.log("this is the filegp:", filegp);
-	// console.log("this is the req.files:", req.files);
-	console.log("this is the file:", file);
-	// console.log(file.name);
-	// console.log(file.type);
+app.post("/leads", upload.single('files'), function(req, res) {
+	console.log('got request from angular');
+	var tmp_path = req.file.path;
+	console.log('this is the temp file path', tmp_path);
+	var target_path = 'uploads/' + req.file.originalname;
+	console.log('this is the target path', target_path);
 
-	// let leads = mongoUtil.leads();
+	var src = fs.createReadStream(tmp_path);
+	var dest = fs.createWriteStream(target_path);
+	src.pipe(dest);
+	src.on('end', function() {
+		res.render('complete');
+	});
+	src.on('error', function(err) {
+		res.render('error');
+	});
 
-	if (file) {
-		console.log("Made it to server side", file);
+	// console.log(req.body); // form fields
+	// console.log(req.files); // form files
+	if (req) {
+		console.log("Made it to server side");
 		res.sendStatus(400);
 	} else {
-		console.log("Didn't make it to server side.")
+		console.log("Didn't make it to server side.");
 		res.sendStatus(201);
 	}
 });

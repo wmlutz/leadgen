@@ -14,19 +14,8 @@
     <form>
       <div class="form-group">
         <label for="file">Upload your CSV</label>
-        <!-- <input type="file" ngf-select="upload($file)" ngf-pattern=".csv" ng-accept="'.csv'" ngf-max-height="1000" ngf-max-size="1MB">
-    Select File</input>
-    File:
-     <div style="font:smaller">{{f.name}} {{errFile.name}} {{errFile.$error}} {{errFile.$errorParam}}
-         <span class="progress" ng-show="f.progress >= 0">
-             <div style="width:{{f.progress}}%"
-                  ng-bind="f.progress + '%'"></div>
-         </span>
-     </div>
-     {{errorMsg}} -->
-
         <br>Leads CSV:
-        <input type="file" ngf-select ng-model="csvFile" name="file" accept=".csv" required ngf-model-invalid="errorFile">
+        <input type="file" ngf-select ng-model="csvFile" name="test" accept=".csv" required ngf-model-invalid="errorFile" enctype="multipart/form-data">
         <i ng-show="myForm.file.$error.required">*required</i><br>
         <button ng-click="csvFile = null" ng-show="csvFile">Remove</button>
         <br>
