@@ -3,9 +3,9 @@ angular.module('obviapp').config(function($routeProvider){
   .when('/', {
   	templateUrl: '/src/templates/main/index.html'
   })
-  .when('/intro', {
-    templateUrl: '/src/templates/intro/index.html',
-    controller: 'introController'
+  .when('/info', {
+    templateUrl: '/src/templates/info/index.html',
+    controller: 'infoController'
   })
   .when('/leads', {
     templateUrl: '/src/templates/leads/index.html',

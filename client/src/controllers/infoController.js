@@ -1,4 +1,4 @@
-angular.module('obviapp').controller('introController', function($http) {
+angular.module('obviapp').controller('infoController', function($http) {
 
 	this.saveUser = function(user) {
 		console.log("Save User Function: ", angular.toJson(user));
