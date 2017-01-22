@@ -8,6 +8,7 @@ let upload = multer({
 	dest: './uploads/'
 });
 let fs = require('fs');
+var Converter = require('csvtojson').Converter;
 
 mongoUtil.connect();
 
@@ -31,22 +32,30 @@ app.get("/leads", function(resquest, response) {
 
 // server takes leads file and manages it
 app.post("/leads", upload.single('files'), function(req, res) {
-	console.log('Starting Server post module');
+	// console.log('Starting Server post module');
 	var tmp_path = req.file.path;
 	var target_path = 'uploads/' + req.file.originalname;
-	console.log('this is the path and tmp path', target_path, tmp_path);
+	// console.log('this is the path and tmp path', target_path, tmp_path);
 
-	var src = fs.createReadStream(tmp_path);
+	var csvConverter=new Converter({});
+
+	csvConverter.on("end_parsed",function(jsonObj){
+    console.log(jsonObj); //here is your result json object
+});
+
+	// var src =
+	fs.createReadStream(tmp_path).pipe(csvConverter);;
+
 	var dest = fs.createWriteStream(target_path);
-	src.pipe(dest);
-	src.on('end', function() {
-		// res.render('complete');
-		res.sendStatus(201);
-	});
-	src.on('error', function(err) {
-		// res.render('error');
-		res.sendStatus(400);
-	});
+	// src.pipe(dest);
+	// src.on('end', function() {
+	// 	// res.render('complete');
+	// 	res.sendStatus(201);
+	// });
+	// src.on('error', function(err) {
+	// 	// res.render('error');
+	// 	res.sendStatus(400);
+	// });
 });
 
 app.get("/campaigns", function(resquest, response) {
