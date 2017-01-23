@@ -32,30 +32,28 @@ app.get("/leads", function(resquest, response) {
 
 // server takes leads file and manages it
 app.post("/leads", upload.single('files'), function(req, res) {
-	// console.log('Starting Server post module');
 	var tmp_path = req.file.path;
-	var target_path = 'uploads/' + req.file.originalname;
-	// console.log('this is the path and tmp path', target_path, tmp_path);
+	var csvConverter = new Converter({});
 
-	var csvConverter=new Converter({});
+	csvConverter.on("end_parsed", function(jsonObj) {
+			console.log("here is my json object", jsonObj); //here is your result json object
+		})
+		.on('done', (err) => {
+			res.sendStatus(201);
+		})
+		.on('error', (err) => {
+			console.log(err);
+			res.sendStatus(400);
+		});
 
-	csvConverter.on("end_parsed",function(jsonObj){
-    console.log(jsonObj); //here is your result json object
-});
-
-	// var src =
 	fs.createReadStream(tmp_path).pipe(csvConverter);;
+	fs.unlink(tmp_path, err =>{
+		if (err){
+			console.log("error", err);
+			res.sendStatus(400);
+		};
+	});
 
-	var dest = fs.createWriteStream(target_path);
-	// src.pipe(dest);
-	// src.on('end', function() {
-	// 	// res.render('complete');
-	// 	res.sendStatus(201);
-	// });
-	// src.on('error', function(err) {
-	// 	// res.render('error');
-	// 	res.sendStatus(400);
-	// });
 });
 
 app.get("/campaigns", function(resquest, response) {
