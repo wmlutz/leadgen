@@ -32,11 +32,24 @@ app.get("/leads", function(resquest, response) {
 
 // server takes leads file and manages it
 app.post("/leads", upload.single('files'), function(req, res) {
+	let leads = mongoUtil.leads();
 	var tmp_path = req.file.path;
 	var csvConverter = new Converter({});
 
-	csvConverter.on("end_parsed", function(jsonObj) {
-			console.log("here is my json object", jsonObj); //here is your result json object
+	csvConverter.on("end_parsed", function(newLeads) {
+			for (i = 0; i <= (newLeads.length - 1); i++) {
+				newLeads[i]["campaign_id"] = "Avengers Recruiting";
+				// console.log("check json loop", newLeads[i]); //here is your result json object
+			}
+
+			console.log("final json", newLeads); //here is result json object
+
+			// XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXxx
+			// XXXXXXXXXXXXX Need to uncomment below section to insert into the database
+			// leads.insertMany(newLeads, (err, res) => { // Inserting into the database
+			// 	if (err) {console.log(err);};
+			// });
+			// XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXxx
 		})
 		.on('done', (err) => {
 			res.sendStatus(201);
@@ -47,9 +60,9 @@ app.post("/leads", upload.single('files'), function(req, res) {
 		});
 
 	fs.createReadStream(tmp_path).pipe(csvConverter);;
-	fs.unlink(tmp_path, err =>{
-		if (err){
-			console.log("error", err);
+	fs.unlink(tmp_path, err => {
+		if (err) {
+			console.log(err);
 			res.sendStatus(400);
 		};
 	});
